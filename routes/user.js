@@ -2,20 +2,23 @@ const express = require('express');
 const userRouter = express.Router();
 
 const {
-    getUserDetails
+  getUserDetails,
+  getEmployeeDetails,
+  getAvailableCandidates,
+  getAvailableReplacement,
 } = require('../controllers/candidate');
 
-// Get a user for profile page 
-userRouter.route("/:id").get(getUserDetails)
+// Get a user for profile page
+userRouter.route('/:id').get(getUserDetails);
 
 // Get Employee's type - matcan or matrep
-userRouter.route("/type/:id").get(getEmployeeDetails) 
+userRouter.route('/type/:id').get(getEmployeeDetails);
 
 // Get all candidates a replacement can apply for
-userRouter.route("option/candidate").get(getAvailableCandidates)
+userRouter.route('option/candidate').get(getAvailableCandidates);
 
 // Get all replacements for a candidate
-userRouter.route("option/replacement").get(getAvailableReplacement)
+userRouter.route('option/replacement').get(getAvailableReplacement);
 
 // Main flow
 
