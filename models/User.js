@@ -37,9 +37,16 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 777187d (More registration fixes)
+=======
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> cc22e16 (authentication works now!)
+>>>>>>> 89b82e2 (authentication works now!)
     // required: [true, 'Please select a role'],
   },
   candidateType: {
@@ -48,7 +55,14 @@ const userSchema = new mongoose.Schema({
     // required: [true, 'Please select a role'],\
 =======
     // required: [true, 'Please select a role'],
+<<<<<<< HEAD
 >>>>>>> 777187d (More registration fixes)
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 93b03bc (authentication works now!)
+>>>>>>> cc22e16 (authentication works now!)
+>>>>>>> 89b82e2 (authentication works now!)
   },
   company: {
     type: mongoose.Schema.Types.ObjectId,
