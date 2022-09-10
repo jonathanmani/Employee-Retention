@@ -19,7 +19,7 @@ app.use(cors());
 //API route setups
 app.use('/api/auth', require('./routes/auth'));
 // app.use('/api/skill', require('./routes/skill'));
-// app.use('/api/user', require('./routes/user'));
+app.use('/api/user', require('./routes/user'));
 // app.use('/api/job', require('./routes/job'));
 // app.use('/api/company', require('./routes/company'));
 
