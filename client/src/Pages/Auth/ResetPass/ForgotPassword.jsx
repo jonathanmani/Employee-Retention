@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-import "./style.css";
-import { getConfig } from '../../../utils/config'
-const ForgotPasswordScreen = () => {
+import styles from './reset.module.css'
+import { getConfig } from '../../../Utils/config'
+const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -59,4 +59,4 @@ const ForgotPasswordScreen = () => {
   );
 };
 
-export default ForgotPasswordScreen;
+export default ForgotPasswordPage;

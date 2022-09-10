@@ -41,7 +41,7 @@ const Navbar = () => {
           </ul> */}
 
           <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-info me-2">
+            <button type="button" class="btn btn-outline-info me-2" onClick={loginHandler}>
               Login
             </button>
             {/* <button type="button" class="btn btn-primary">

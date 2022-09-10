@@ -4,13 +4,13 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./register.module.css";
 
-import { getConfig } from "../../../utils/config";
-import { tokenChecker } from "../../../utils/token";
+import { getConfig } from "../../../Utils/config";
+import { tokenChecker } from "../../../Utils/token";
 
 import { IoIosArrowBack } from "react-icons/io";
 import { motion } from "framer-motion";
 
-const RegisterScreen = ({ history }) => {
+const RegisterPage = ({ history }) => {
   let navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -144,4 +144,4 @@ const RegisterScreen = ({ history }) => {
   );
 };
 
-export default RegisterScreen;
+export default RegisterPage;

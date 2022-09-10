@@ -3,11 +3,9 @@ import axios from "axios";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./login.module.css";
 import { IoIosArrowBack } from "react-icons/io";
-
-import { getConfig } from "../../../utils/config";
-import { tokenChecker } from "../../../utils/token";
-import {motion} from 'framer-motion'
-
+import { getConfig } from "../../../Utils/config";
+import { tokenChecker } from "../../../Utils/token";
+import { motion } from "framer-motion";
 const LoginScreen = ({ history }) => {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
