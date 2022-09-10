@@ -1,10 +1,15 @@
 import React from "react";
 import { createContext, useState } from "react";
 
-export const ColorContext = createContext();
+export const UserContext = createContext();
 
 export function ColorProvider({ children }) {
-  const [color, setColor] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
+  const [company, setCompany] = useState("");
+  const [type, setType] = useState("");
 
   const pinkHandler = () => {
     setColor("pink");
@@ -13,8 +18,10 @@ export function ColorProvider({ children }) {
     setColor("blue");
   };
   return (
-    <ColorContext.Provider value={{ color, pinkHandler, blueHandler }}>
+    <UserContext.Provider
+      value={{ color, firstName, lastName, email, role, company, type }}
+    >
       {children}
-    </ColorContext.Provider>
+    </UserContext.Provider>
   );
 }

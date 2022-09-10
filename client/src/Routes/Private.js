@@ -16,7 +16,7 @@ function PrivateOutlet() {
       tokenRemover();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
+  }, []);
 
   const auth = localStorage.getItem("authToken");
   return auth ? <Outlet /> : <Navigate to="/login" />;
