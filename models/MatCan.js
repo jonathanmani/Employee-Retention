@@ -9,7 +9,6 @@ const MatCanSchema = new mongoose.Schema({
     },
     allowedJobTitles: [String],
     
-
 });
 
 const MatCan = mongoose.model('MatCan', MatCanSchema);
