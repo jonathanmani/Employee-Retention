@@ -32,5 +32,5 @@ Employee[User]
 - MatRep[Employee]
     - Job Title, Start Date, End date
 - MatCan
-    - Start date, end date
+    - Start date and end date
 */
