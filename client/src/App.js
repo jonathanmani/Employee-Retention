@@ -7,7 +7,7 @@ import RegisterPage from "./Pages/Auth/Register/Register";
 import LoginPage from "./Pages/Auth/Login/Login";
 import ForgotPasswordPage from "./Pages/Auth/ResetPass/ForgotPassword";
 import ResetPage from "./Pages/Auth/ResetPass/Reset";
-import DashboardPage from "./Pages/App/Dashboard";
+import DashboardPage from "./Pages/App/DashContainer";
 
 const App = () => {
   console.log("app is working");

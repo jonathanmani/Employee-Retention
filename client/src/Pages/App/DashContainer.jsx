@@ -6,7 +6,7 @@ const Dashboard = () => {
     <>
     <AppNav>
         <Page>
-            Hello
+            
         </Page>
     </AppNav>
     </>
