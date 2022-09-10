@@ -1,6 +1,6 @@
 const express = require('express');
 const userRouter = express.Router();
-
+const {protect } = require('../middleware/auth')
 const {
   getUserDetails,
   getEmployeeDetails,
@@ -12,6 +12,7 @@ const {
 userRouter.route('/:id').get(getUserDetails);
 
 // Get Employee's type - matcan or matrep
+
 userRouter.route('/type/:id').get(getEmployeeDetails);
 
 // Get all candidates a replacement can apply for
@@ -19,6 +20,7 @@ userRouter.route('option/candidate').get(getAvailableCandidates);
 
 // Get all replacements for a candidate
 userRouter.route('option/replacement').get(getAvailableReplacement);
+
 
 // Main flow
 

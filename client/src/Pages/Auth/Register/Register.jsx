@@ -46,7 +46,7 @@ const RegisterPage = ({ history }) => {
       console.log(data)
       localStorage.setItem("authToken", data.token);
       console.log(data);
-      return navigate("/app/dashboard");
+      return navigate("/app/onboarding");
     } catch (error) {
       setError(error.response.data.error);
       console.log("error");
