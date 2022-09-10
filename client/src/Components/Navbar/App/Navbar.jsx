@@ -4,7 +4,7 @@ import { tokenRemover } from "../../../Utils/token";
 
 const Navbar = () => {
   let navigate = useNavigate()
-  const logoutHandler = () => {
+  const loginHandler = () => {
     tokenRemover()
     return navigate("/")
   }
