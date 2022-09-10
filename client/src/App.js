@@ -16,7 +16,7 @@ const App = () => {
             exact
             path="/forgotpassword"
             element={<ForgotPasswordPafge />}
-          />
+          /> 
           <Route
             exact
             path="/passwordreset/:resetToken"
