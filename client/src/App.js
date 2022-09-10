@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+const App = () => {
+  console.log("app is working");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/app" element={<PrivateOutlet />}>
+
+
+        </Route>
+
+        <Route path="/auth" element={<PublicOutlet />}>
+          <Route index path="/login" element={<LoginScreen />} />
+          <Route exact path="/register" element={<RegisterScreen />} />
+          <Route
+            exact
+            path="/forgotpassword"
+            element={<ForgotPasswordPafge />}
+          />
+          <Route
+            exact
+            path="/passwordreset/:resetToken"
+            element={<ResetPage />}
+          />
+        </Route>
+
+        <Route path="/web" element={<PublicOutlet />}>
+          <Route path="" element={<HomePage />} />
+        </Route>
+
+
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
