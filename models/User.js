@@ -5,9 +5,16 @@ const jwt = require('jsonwebtoken');
 
 //This is the schema for the user
 const userSchema = new mongoose.Schema({
-  username: {
+  firstName: {
     type: String,
-    required: [true, 'Please provide a username'],
+    required: [true, 'Please provide a first name'],
+  },
+  middleName: {
+    type: String,
+  },
+  lastName: {
+    type: String,
+    required: [true, 'Please provide a last name'],
   },
   email: {
     type: String,
@@ -28,7 +35,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please select a role'],
   },
-  company: String,
+  candidateType: {
+    type: String,
+    required: [true, 'Please select a role'],
+  },
+  company: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Company',
+  },
   job: String,
   skills: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skills' }],
   resetPasswordToken: String,
