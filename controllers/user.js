@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const MatCan = require('../models/MatCan');
 const MatRep = require('../models/MatRep');
-const find
+const findReplacements = require('../services/findReplacements');
 
 exports.getUserDetails = async (req, res, next) => {
   const user = await User.findById(req.params.id);
@@ -29,6 +29,20 @@ exports.getAvailableCandidates = async (req, res, next) => {
 
   if (!replacement) res.status(403).end();
 
+  const candidates = findCandidates(jobTitle, startDate, endDate);
 
-  res.json({ user });
+  res.json(candidates);
+};
+
+exports.getAvailableReplacements = async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+  const candidate = await MatCan.find({ user: req.params.id });
+
+  if (!user) res.status(404).end();
+
+  if (!candidate) res.status(403).end();
+
+  const replacements = findReplacements(jobTitle, startDate, endDate);
+
+  res.json(replacements);
 };
