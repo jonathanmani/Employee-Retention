@@ -25,3 +25,5 @@ yarn-debug.log*
 yarn-error.log*
 
 utils/requests
+
+bootstrap-5.2.0-examples

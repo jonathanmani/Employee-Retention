@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./Pages/Web/Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import PrivateOutlet from "./Routes/Private";
+import PublicOutlet from "./Routes/Public";
 
-function App() {
+import RegisterPage from "./Pages/Auth/Register/Register";
+import LoginPage from "./Pages/Auth/Login/Login";
+import ForgotPasswordPage from "./Pages/Auth/ResetPass/ForgotPassword";
+import ResetPage from "./Pages/Auth/ResetPass/Reset";
+const App = () => {
+  console.log("app is working");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* <Route path="/app" element={<PrivateOutlet />}> */}
+
+        {/* </Route> */}
+
+        <Route path="/auth" element={<PublicOutlet />}>
+          <Route exact path="login" element={<LoginPage />} />
+          <Route exact path="register" element={<RegisterPage />} />
+          <Route
+            exact
+            path="forgotpassword"
+            element={<ForgotPasswordPage />}
+          />
+          <Route
+            exact
+            path="passwordreset/:resetToken"
+            element={<ResetPage />}
+          />
+        </Route>
+
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
