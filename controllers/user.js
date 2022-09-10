@@ -4,7 +4,8 @@ const MatRep = require('../models/MatRep');
 const findReplacements = require('../services/findReplacements');
 
 exports.getUserDetails = async (req, res, next) => {
-  const user = await User.findById(req.params.id);
+  console.log()
+  const user = await User.findById(req.user.id);
   const candidate = await MatCan.find({ user: req.params.id });
   const replacement = await MatRep.find({ user: req.params.id });
 

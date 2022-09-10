@@ -1,12 +1,12 @@
 const express = require('express');
 const userRouter = express.Router();
-
+const {protect } = require('../middleware/auth')
 const {
     getUserDetails
 } = require('../controllers/user');
 
 // Get a user for profile page 
-userRouter.route("/").get(getUserDetails)
+userRouter.route("/").get(protect,getUserDetails)
 
 // Get Employee's type - matcan or matrep
 // userRouter.route("/type/:id").get(getEmployeeDetails) 
