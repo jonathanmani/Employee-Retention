@@ -1,7 +1,7 @@
 import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
-import { tokenRemover } from "../utils/token";
+import { tokenRemover } from '../Utils/token';
 
 function PrivateOutlet() {
   const location = useLocation();
