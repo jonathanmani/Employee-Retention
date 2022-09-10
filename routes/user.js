@@ -1,6 +1,7 @@
 const express = require('express');
 const userRouter = express.Router();
 
+<<<<<<< HEAD
 const {
     getUserDetails
 } = require('../controllers/candidate');
@@ -16,6 +17,20 @@ userRouter.route("option/candidate").get(getAvailableCandidates)
 
 // Get all replacements for a candidate
 userRouter.route("option/replacement").get(getAvailableReplacement)
+=======
+const { getUserDetails } = require('../controllers/user');
+
+// Get a user for profile page
+userRouter.route('/:id').get(getUserDetails);
+
+// Get all candidates a replacement can apply for
+userRouter.route('option/candidate/:id').get(getAvailableCandidates);
+
+// Get all replacements for a candidate
+// userRouter.route('option/replacement').get(getAvailableReplacement);
+
+module.exports = userRouter;
+>>>>>>> e7d3ebd (temp commit)
 
 // Main flow
 
