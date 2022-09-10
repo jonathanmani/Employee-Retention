@@ -1,0 +1,42 @@
+:root {
+    --secondary: #c8c8c8;
+  }
+  .backIcon {
+    font-size: xx-large;
+  }
+  
+  .loginscreen {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../../images/backgrounds/waveBackground1.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .loginScreen__form {
+    width: 380px;
+    padding: 1.5rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    background: #fbfbfb;
+    border-radius: 0.25rem;
+  }
+  
+  .login-screen__title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .login-screen__forgotpassword {
+    font-size: 0.7rem;
+  }
+  
+  .login-screen__subtext {
+    font-size: 0.7rem;
+    display: block;
+    margin: 0.5rem 0;
+  }
+  
+  
