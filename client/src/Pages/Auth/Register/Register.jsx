@@ -12,7 +12,8 @@ import { motion } from "framer-motion";
 
 const RegisterPage = ({ history }) => {
   let navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -39,9 +40,10 @@ const RegisterPage = ({ history }) => {
     try {
       const { data } = await axios.post(
         "/api/auth/register",
-        { username, email, password },
+        { firstName, lastName, email, password },
         config
       );
+      console.log(data)
       localStorage.setItem("authToken", data.token);
       console.log(data);
       return navigate("/app/dashboard");
@@ -80,15 +82,27 @@ const RegisterPage = ({ history }) => {
           )}
 
           <div className="form-group d-flex flex-column py-2">
-            <label htmlFor="email">Username:</label>
+            <label htmlFor="FirstName">First Name:</label>
             <input
               className="form-control"
               type="text"
               required
               id="email"
-              placeholder="Enter Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter Your Name"
+              
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+          <div className="form-group d-flex flex-column py-2">
+            <label htmlFor="LastName">Last Name:</label>
+            <input
+              className="form-control"
+              type="text"
+              required
+              id="email"
+              placeholder="Enter Your Last Name"
+              
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
           <div className="form-group d-flex flex-column py-2">
