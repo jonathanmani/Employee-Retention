@@ -23,6 +23,15 @@ function shuffleArray(array) {
     }
 }
 
+function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function randomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+}
+
+
 const AddCompany = async (count) => {
     for (let i = 0; i < count; i++) {
         let name = faker.company.companyName();
@@ -36,7 +45,7 @@ const AddCompany = async (count) => {
             name: name,
             industry: industries
         });
-       await Company.create(newCompany);
+        await Company.create(newCompany);
     }
 }
 
@@ -44,7 +53,10 @@ const AddSkills = async (count) => {
     for (let i = 0; i < count; i++) {
         let category = faker.company.bsAdjective();
         let label = faker.company.bsAdjective();
-        await Skill.create({ category: category, label: label });
+        await Skill.create({
+            category: category,
+            label: label
+        });
     }
 }
 const AddUser = async (count) => {
@@ -56,9 +68,13 @@ const AddUser = async (count) => {
         let password = faker.random.alphaNumeric(12);
         let job = faker.name.jobTitle();
         let role = roles[Math.floor(Math.random() * roles.length)];
-        let companyResults = await Company.find({}, {_id: 1});
+        let companyResults = await Company.find({}, {
+            _id: 1
+        });
         let company = companyResults[Math.floor(Math.random() * companyResults.length)]
-        let skillsResult =  await Skill.find({}, {_id: 1});
+        let skillsResult = await Skill.find({}, {
+            _id: 1
+        });
         shuffleArray(skillsResult)
         let skill = skillsResult.slice(0, Math.floor(Math.random() * 8));
         let user = {
@@ -71,17 +87,40 @@ const AddUser = async (count) => {
             company: company,
             skill: skill
         };
-        
+
         await User.create(user);
     }
 }
 
 
 const AddMatRep = async (count) => {
-    for(let i = 0; i < count; i++){
-        let startDate = new Date(new Date() - Math.random() * (1e+12));
-        let result = startDate.setDate(new Date())
+    let users = await User.find({}, { _id: 1, job: 1});
+    let jobTitles = await User.find({}, {})
+    for (let i = 0; i < count; i++) {
+        let startDate = randomDate(new Date(2022, 10, 01), new Date(2023, 12, 01));
+        let endDate = randomDate(startDate, new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDay()));
+        shuffleArray(users);
+        let randomUser = users[Math.floor(Math.random() * users.length)];
+        let user = randomUser["_id"];
+        let jobTitle = [randomUser.job];
+        await MatRep.create({startDate: startDate, endDate: endDate, user: user, allowedJobTitles: jobTitle })
     }
 }
 
-AddUser(10);
+const AddMatCan = async (count) => {
+    let users = await User.find({}, { _id: 1, job: 1 });
+    for (let i = 0; i < count; i++) {
+        let startDate = randomDate(new Date(2022, 10, 01), new Date(2023, 12, 01));
+        let endDate = randomDate(startDate, new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDay()));
+        shuffleArray(users);
+        let randomUser = users[Math.floor(Math.random() * users.length)];
+        let user = randomUser["_id"];
+        let jobTitle = [randomUser.job];
+        await MatCan.create({ startDate: startDate, endDate: endDate, user: user, allowedJobTitles: jobTitle })
+    }
+}
+
+
+
+AddMatCan(100);
+AddMatRep(100)
