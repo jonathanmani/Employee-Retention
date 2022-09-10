@@ -1,7 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Nav from "../../Layouts/Nav";
 import Page from "../../Layouts/Page";
 const Home = () => {
+  let navigate = useNavigate()
+  const getStartedHandler = () => {
+    return navigate("/auth/register")
+  }
   return (
     <div>
       <Nav>
@@ -19,7 +24,7 @@ const Home = () => {
                     eaque, aspernatur ad nostrum et culpa unde quia ducimus
                     reiciendis dolores voluptate soluta alias?
                   </p>
-                  <button class="btn btn-info text-white btn-lg" type="button">
+                  <button class="btn btn-info text-white btn-lg" type="button" onClick={getStartedHandler}>
                     Get Started
                   </button>
                 </div>

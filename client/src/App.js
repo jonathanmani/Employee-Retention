@@ -17,7 +17,7 @@ const App = () => {
         {/* </Route> */}
 
         <Route path="/auth" element={<PublicOutlet />}>
-          <Route index path="login" element={<LoginPage />} />
+          <Route exact path="login" element={<LoginPage />} />
           <Route exact path="register" element={<RegisterPage />} />
           <Route
             exact

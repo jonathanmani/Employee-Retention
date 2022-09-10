@@ -1,6 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  let navigate = useNavigate()
+  const loginHandler = () => {
+    return navigate("/auth/login")
+  }
   return (
     <>
       <div class="container">

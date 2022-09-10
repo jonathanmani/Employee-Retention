@@ -134,7 +134,7 @@ const RegisterPage = ({ history }) => {
           </button>
 
           <span className="Registerscreen__subtext pt-2">
-            <Link to="/Login">
+            <Link to="/auth/login">
               <b>Already have an account?</b>
             </Link>
           </span>

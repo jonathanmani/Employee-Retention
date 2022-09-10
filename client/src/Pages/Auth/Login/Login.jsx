@@ -98,7 +98,7 @@ const LoginScreen = ({ history }) => {
           </button>
 
           <span className="pt-2 login-screen__subtext">
-          <Link to="/register"><b className=""> Do not have an account? </b></Link>
+          <Link to="/auth/register"><b className=""> Do not have an account? </b></Link>
           </span>
         </form>
       </div>
