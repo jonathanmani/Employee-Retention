@@ -33,7 +33,6 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    required: [true, 'Please select a role'],
   },
   
   company: {
