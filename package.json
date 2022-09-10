@@ -7,16 +7,7 @@
   "scripts": {
     "server": "nodemon server",
     "client": "npm start --prefix client",
-<<<<<<< HEAD
     "dev": "concurrently \"npm run server\" \"npm run client\" "
-=======
-<<<<<<< HEAD
-    "dev": "concurrently \"npm run server\" \"npm run client\" ",
-    "build": "cd client && npm install && npm run build"
-=======
-    "dev": "concurrently \"npm run server\" \"npm run client\" "
->>>>>>> 5da847d (More registration fixes)
->>>>>>> 1b3a4f6 (More registration fixes)
   },
   "repository": {
     "type": "git",
