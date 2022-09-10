@@ -12,6 +12,9 @@ const userSchema = new mongoose.Schema({
   middleName: {
     type: String,
   },
+  isOnboardingCompleted: {
+    type: Boolean,
+  },
   lastName: {
     type: String,
     required: [true, 'Please provide a last name'],
@@ -33,11 +36,11 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    required: [true, 'Please select a role'],
+
+    // required: [true, 'Please select a role'],
   },
   candidateType: {
     type: String,
-    required: [true, 'Please select a role'],
   },
   company: {
     type: mongoose.Schema.Types.ObjectId,

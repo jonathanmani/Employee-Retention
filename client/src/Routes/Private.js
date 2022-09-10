@@ -1,13 +1,13 @@
 import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
-import { tokenRemover } from '../Utils/token';
+import { tokenRemover } from "../Utils/token";
 
 function PrivateOutlet() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const securityCheck = () => {
     let token = localStorage.getItem("authToken");
     const { exp } = jwtDecode(token);
     const currentTime = new Date().getTime();
@@ -15,8 +15,17 @@ function PrivateOutlet() {
       navigate("/login");
       tokenRemover();
     }
+    userObject()
+  };
+  const userObject = () => {
+    
+  }
+
+  useEffect(() => {
+    securityCheck()
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
+  }, []);
 
   const auth = localStorage.getItem("authToken");
   return auth ? <Outlet /> : <Navigate to="/login" />;
