@@ -36,12 +36,19 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
+<<<<<<< HEAD
 
+=======
+>>>>>>> 777187d (More registration fixes)
     // required: [true, 'Please select a role'],
   },
   candidateType: {
     type: String,
+<<<<<<< HEAD
     // required: [true, 'Please select a role'],\
+=======
+    // required: [true, 'Please select a role'],
+>>>>>>> 777187d (More registration fixes)
   },
   company: {
     type: mongoose.Schema.Types.ObjectId,
