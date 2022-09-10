@@ -3,10 +3,10 @@ const userRouter = express.Router();
 
 const {
     getUserDetails
-} = require('../controllers/candidate');
+} = require('../controllers/user');
 
 // Get a user for profile page 
-userRouter.route("/:id").get(getUserDetails)
+userRouter.route("/").get(getUserDetails)
 
 // Get Employee's type - matcan or matrep
 userRouter.route("/type/:id").get(getEmployeeDetails) 
