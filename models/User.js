@@ -33,11 +33,11 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    required: [true, 'Please select a role'],
+    // required: [true, 'Please select a role'],
   },
   candidateType: {
     type: String,
-    required: [true, 'Please select a role'],
+    // required: [true, 'Please select a role'],
   },
   company: {
     type: mongoose.Schema.Types.ObjectId,
