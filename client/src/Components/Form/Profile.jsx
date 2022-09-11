@@ -24,10 +24,10 @@ const SelectComp = () => {
   const pullJobTitles = async(props) => {
     
     let arr = []
-    let id = localStorage.getItem("id")
+    
     try {
       await axios
-        .get(`http://localhost:4000/api/user/option/replacement/${id}`, config)
+        .get(`http://localhost:4000/api/job`, config)
         .then((response) => {
           response.data.map((val, index) => {
             arr.push({value: val.title, label: val.title})
@@ -42,8 +42,9 @@ const SelectComp = () => {
   }, []);
 
   const saveHandler = async() => {
+    let id = localStorage.getItem("id")
     try {
-   const {data} = await axios.post("http://localhost:4000/api/job/", selectedOptions, config) 
+   const {data} = await axios.get(`http://localhost:4000/api/user/option/replacement/631d1535ac34dfcdf602c9c0`, selectedOptions, config) 
    console.log(data)
     } catch (error) {
       
