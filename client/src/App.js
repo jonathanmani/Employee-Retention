@@ -8,6 +8,7 @@ import LoginPage from "./Pages/Auth/Login/Login";
 import ForgotPasswordPage from "./Pages/Auth/ResetPass/ForgotPassword";
 import ResetPage from "./Pages/Auth/ResetPass/Reset";
 import DashboardPage from "./Pages/App/DashContainer";
+import RouterDash from "./Pages/Auth/RouterDash/Page";
 
 const App = () => {
   console.log("app is working");
@@ -15,6 +16,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/app" element={<PrivateOutlet />}>
+          <Route path="router" element={<RouterDash />}/>
         <Route exact path="dashboard" element={<DashboardPage />} />
         </Route>
 

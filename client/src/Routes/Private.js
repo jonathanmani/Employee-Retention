@@ -28,8 +28,8 @@ function PrivateOutlet() {
       await axios
         .get("http://localhost:4000/api/user", config)
         .then((response) => {
-          const { firstName, lastName, email } = response.data.user;
-          userStorageHandler(firstName,lastName,email);
+          const { firstName, lastName, email, candidateType} = response.data.user;
+          userStorageHandler(firstName,lastName,email, candidateType);
         });
     } catch (error) {
       console.log(error);

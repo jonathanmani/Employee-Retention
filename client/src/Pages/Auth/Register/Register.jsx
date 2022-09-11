@@ -18,6 +18,7 @@ const RegisterPage = ({ history }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [candidate,setCandidate] = useState("")
 
   useEffect(() => {
     if (tokenChecker()) {
@@ -43,7 +44,7 @@ const RegisterPage = ({ history }) => {
         { firstName, lastName, email, password },
         config
       );
-      console.log(data)
+      console.log(data);
       localStorage.setItem("authToken", data.token);
       console.log(data);
       return navigate("/app/onboarding");
@@ -89,7 +90,6 @@ const RegisterPage = ({ history }) => {
               required
               id="email"
               placeholder="Enter Your Name"
-              
               onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
@@ -101,7 +101,6 @@ const RegisterPage = ({ history }) => {
               required
               id="email"
               placeholder="Enter Your Last Name"
-              
               onChange={(e) => setLastName(e.target.value)}
             />
           </div>
@@ -116,6 +115,14 @@ const RegisterPage = ({ history }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+          </div>
+          <div className="form-group d-flex flex-column py-2">
+            <label htmlFor="email">Candidate Type:</label>
+            <select id="inputState" onChange={(e) => setCandidate(e.target.value)}>
+              <option>Mat Can</option>
+              <option>Mat Rep </option>
+              <option>Admin</option>
+            </select>
           </div>
 
           <div className=" form-group d-flex flex-column pb-2">
