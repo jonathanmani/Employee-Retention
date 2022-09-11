@@ -10,6 +10,7 @@ const Skill = require("../models/Skill");
 const MatRep = require("../models/MatRep");
 const MatCan = require("../models/MatCan");
 const Job = require("../models/Job");
+const EmploymentHistory = require('../models/EmploymentHistory');
 
 require('dotenv').config({
     path: './config.env'
@@ -114,7 +115,9 @@ const AddMatRep = async (count) => {
         let jobs = []
         let yearsOfExperience = Math.floor(Math.random() * 10 + 10);
         for (let j = 0; j < randomJobCount; j++) {
-            jobs.push(users[j]["job"]);
+            if (users[j]["job"]) {
+                jobs.push(users[j]["job"]);
+            }
         }
         await MatRep.create({
             startDate: startDate,
@@ -145,7 +148,10 @@ const AddMatCan = async (count) => {
         let yearsOfExperience = Math.floor(Math.random() * 10 + 10);
         jobs = []
         for (let j = 0; j < randomJobCount; j++) {
-            jobs.push(users[j]["job"]);
+            if (users[j]["job"]) {
+
+                jobs.push(users[j]["job"]);
+            }
         }
         let jobTitle = jobs;
         await MatCan.create({
@@ -154,6 +160,7 @@ const AddMatCan = async (count) => {
             user: user,
             allowedJobTitles: jobTitle,
             industries: industry,
+            yearsOfExperience: yearsOfExperience
         })
     }
 }
@@ -175,8 +182,24 @@ const AddJobs = async (count) => {
     }
 }
 
-const AddHRBroker = async (count) => {
-    let
+const AddEmploymentHistory = async (count) => {
+    let users = await User.find({});
+    let companies = await Company.find({});
+    let industries = ["Finance", "Marketing", "HR", "Law", "Data", "Software"]
+    shuffleArray(companies);
+    shuffleArray(users);
+    for(let i = 0; i < count; i++){
+        shuffleArray(industries);
+        let startDate = randomDate(new Date(1990, 1, 1), new Date(2022, 09, 01)); 
+        let endDate = randomDate(startDate, new Date(2023, 01, 01));
+        let accomplishment = Array.from({ length: Math.floor(Math.random() * 5 + 10)}, () => faker.company.catchPhrase() );
+        let randomUser = users[i];
+        let jobTitle = randomUser.job;
+        let company =  Company.findById(companies[i])["name"];
+        let industry = industries.slice(0, Math.floor(Math.random() * industries.length));
+        let c = await EmploymentHistory.create({user: randomUser["id"], startDate: startDate, endDate: endDate, accomplishments: accomplishment, jobTitle: jobTitle, company: company, industry: industry});
+        console.log(c);
+    }
 }
 
 // // AddCompany(100);
@@ -184,15 +207,24 @@ const AddHRBroker = async (count) => {
 // // AddUser(100);
 // AddMatCan(100);
 // AddMatRep(100);
-AddJobs(100);
+// AddJobs(100);
+AddEmploymentHistory(100);
 
 const f = async () => {
     // let a = await MatCan.deleteMany({});
     // console.log(a);
     // let b = await MatRep.deleteMany({});
     // console.log(b);
-    let c = await Job.deleteMany({});
+    let c = await EmploymentHistory.deleteMany({});
     console.log(c);
 }
 
-// f();
+const j = async () => {
+    let industries = ["Finance", "Marketing", "HR", "Law", "Data", "Software"]
+    let c = Array.from({length: Math.floor(Math.random() * 10)}, () => faker.company.catchPhrase());
+    console.log(c);
+    let industry = industries.slice(0, Math.floor(Math.random() * industries.length));
+    console.log(industry);
+}
+
+f();

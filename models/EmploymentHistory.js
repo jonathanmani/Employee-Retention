@@ -7,8 +7,9 @@ const employmentHistorySchema = new mongoose.Schema({
     jobTitle: [String],
     company: String,
     industry: [String],
+    user: {type:mongoose.Schema.Types.ObjectId, ref: 'User'},
 });
 
-const Company = mongoose.model('Company', employmentHistorySchema);
+const EmploymentHistory = mongoose.model('EmploymentHistory', employmentHistorySchema);
 
-module.exports = Company;
+module.exports = EmploymentHistory;
