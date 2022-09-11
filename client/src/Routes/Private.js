@@ -18,7 +18,7 @@ function PrivateOutlet() {
     const { exp } = jwtDecode(token);
     const currentTime = new Date().getTime();
     if (exp * 1000 < currentTime) {
-      navigate("/login");
+      navigate("/");
       tokenRemover();
     }
     userObject();

@@ -18,6 +18,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/app" element={<PrivateOutlet />}>
+
+          <Route path="dash" element={<DashboardPage />}/>
           <Route path="router" element={<RouterDash />}/>
           <Route path="matCan" element={<MatCanBoard />}/>
           <Route path="matRep" element={<MatRepBoard/>}/>
