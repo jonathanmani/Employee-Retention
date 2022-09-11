@@ -6,6 +6,7 @@ import Page from "../../Layouts/Page";
 import { useEffect } from "react";
 import TripleCardRep from "../../Components/Cards/MatCan/TripleCard";
 import TripleCardCan from "../../Components/Cards/MatRep/TripleCard";
+import TripleCardSkeleton from "../../Components/Cards/TripleCardSkeleton"
 const Dashboard = () => {
   const { type } = useContext(UserContext);
   let component;
@@ -24,11 +25,7 @@ const Dashboard = () => {
             <>{component}</>
           ) : (
             <>
-              <div class="text-center">
-                <div class="spinner-border" role="status">
-                  <span class="visually-hidden">Loading...</span>
-                </div>
-              </div>
+              <TripleCardSkeleton />
             </>
           )}
         </Page>
