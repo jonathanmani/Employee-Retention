@@ -11,6 +11,6 @@ const HRBrokerJobSchema = new mongoose.Schema({
     }]
 });
 
-const HRBroker = mongoose.model('Job', HRBrokerJobSchema);
+const HRBroker = mongoose.model('HRBroker', HRBrokerJobSchema);
 
 module.exports = HRBroker;

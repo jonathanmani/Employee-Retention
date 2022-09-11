@@ -9,6 +9,7 @@ const Company = require('../models/Company');
 const Skill = require("../models/Skill");
 const MatRep = require("../models/MatRep");
 const MatCan = require("../models/MatCan");
+const Job = require("../models/Job");
 
 require('dotenv').config({
     path: './config.env'
@@ -99,17 +100,16 @@ const AddMatRep = async (count) => {
     let users = await User.find({}, { _id: 1, job: 1 });
     shuffleArray(users);
     for (let i = 0; i < count; i++) {
-        let startDate = randomDate(new Date(2022, 10, 01), new Date(2023, 12, 01));
+        let startDate = randomDate(new Date(2022, 10, 1), new Date(2023, 12, 1));
         let endDate = randomDate(startDate, new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDay()));
         let randomUser = users[i];
         let user = randomUser["_id"];
         let randomJobCount = Math.floor(Math.random() * 10);
-        jobs = []
+        let jobs = []
         for (let j = 0; j < randomJobCount; j++) {
             jobs.push(users[j]["job"]);
         }
-        let jobTitle = jobs; 
-        await MatRep.create({ startDate: startDate, endDate: endDate, user: user, allowedJobTitles: jobTitle })
+        await MatRep.create({ startDate: startDate, endDate: endDate, user: user, allowedJobTitles: jobs })
     }
 }
 
@@ -130,11 +130,25 @@ const AddMatCan = async (count) => {
         await MatCan.create({ startDate: startDate, endDate: endDate, user: user, allowedJobTitles: jobTitle })
     }
 }
-AddCompany(100);
-AddSkills(100);
-AddUser(100);
-AddMatCan(100);
-AddMatRep(100);
+
+const AddJobs = async (count) => {
+    let companies = await Company.find({});
+    shuffleArray(companies);
+    for(let i = 0; i < count; i++){
+        let randomCompany = companies[i];
+        let jobTitle = faker.name.jobTitle();
+        let description = faker.lorem.paragraph(Math.floor(Math.random() * 5 + 10));
+        let company = randomCompany["_id"];
+        let jobPosting = {company: company, jobTitle: jobTitle, description: description};
+        await Job.create(jobPosting);
+    }
+}
+// AddCompany(100);
+// AddSkills(100);
+// AddUser(100);
+// AddMatCan(100);
+// AddMatRep(100);
+AddJobs(100);
 
 const f = async () => {
     let a = await MatCan.deleteMany({});
@@ -143,4 +157,4 @@ const f = async () => {
     console.log(b);
 }
 
-// f()
+// f();

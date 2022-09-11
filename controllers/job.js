@@ -1,8 +1,6 @@
-const { response } = require("express");
 const Job = require("../models/Job");
-const Company = require("../models/Company");
 
-exports.getJobs = async (req, res) => {
+const getJobs = async (req, res) => {
     const jobs = await Job.find({});
     if (!jobs) {
         res.json([]);
@@ -10,7 +8,7 @@ exports.getJobs = async (req, res) => {
     res.json(jobs)
 }
 
-exports.getJobDetails = async (req, res) => {
+const getJobDetails = async (req, res) => {
     const job = await Job.findById(req.params.id);
     if (!job) {
         res.status(404).end()
@@ -18,7 +16,7 @@ exports.getJobDetails = async (req, res) => {
     res.json(job);
 }
 
-exports.createJob = async (req, res) => {
+const createJob = async (req, res) => {
 
     try {
         const { title, description, company, user } = req.body;
@@ -31,4 +29,10 @@ exports.createJob = async (req, res) => {
     } catch (err) {
         res.status(400).end();
     }
+}
+
+module.exports = {
+    getJobs,
+    getJobDetails,
+    createJob,
 }

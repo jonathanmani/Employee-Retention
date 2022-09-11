@@ -19,7 +19,7 @@ app.use(cors());
 //API route setups
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/user'));
-app.use('/api/admin', require('./routes/admin'));
+app.use('/api/job', require('./routes/job'));
 
 //* Error Handler (Should be the last piece of middlerware)
 app.use(errorHandler);

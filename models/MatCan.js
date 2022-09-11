@@ -4,7 +4,7 @@ const MatCanSchema = new mongoose.Schema({
     startDate: Date,
     endDate: Date,
     user: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
     allowedJobTitles: [String],
