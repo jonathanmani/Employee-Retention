@@ -1,4 +1,4 @@
-import Navbar from "../Components/Navbar/Website/Navbar"
+import Navbar from '../../Components/Navbar/Website/Navbar'
 const Nav = ({ children }) => {
   return (
     <>

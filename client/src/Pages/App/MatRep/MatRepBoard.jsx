@@ -1,12 +1,17 @@
-import React from 'react'
+import React from "react";
+import TripleCard from "../../../Components/Cards/MatRep/TripleCard";
+import Jobs from "../../../Components/Jobs/MatRep/Jobs";
+import Navbar from "../../../Layouts/Navbars/AppNav";
 
 const MatRepBoard = () => {
   return (
     <div>
-        <h1 class='text-center fs-2'>You are eligible for:</h1>
-        < Jobs />
+      <Navbar>
+        <TripleCard />
+        {/* <Jobs /> */}
+      </Navbar>
     </div>
-  )
-}
+  );
+};
 
-export default MatRepBoard
+export default MatRepBoard;

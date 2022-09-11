@@ -1,4 +1,4 @@
-import Navbar from "../../Components/Navbar/Admin/Navbar"
+import Navbar from "../../../Components/Navbar/Admin/Navbar"
 const AdminNav = ({ children }) => {
   return (
     <>

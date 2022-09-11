@@ -1,26 +1,25 @@
-const express = require('express');
+const express = require("express");
 const userRouter = express.Router();
-const {protect } = require('../middleware/auth')
+const { protect } = require("../middleware/auth");
 const {
   getUserDetails,
   getEmployeeDetails,
   getAvailableCandidates,
   getAvailableReplacement,
-} = require('../controllers/user');
+} = require("../controllers/user");
 
 // Get a user for profile page
-userRouter.route('/:id').get(getUserDetails);
+userRouter.route("/").get(protect, getUserDetails);
 
 // Get Employee's type - matcan or matrep
 
 //userRouter.route('/type/:id').get(getEmployeeDetails);
 
 // Get all candidates a replacement can apply for
-userRouter.route('option/candidate').get(getAvailableCandidates);
+userRouter.route("option/candidate").get(getAvailableCandidates);
 
 // Get all replacements for a candidate
 //userRouter.route('option/replacement').get(getAvailableReplacement);
-
 
 // Main flow
 

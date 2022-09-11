@@ -8,6 +8,9 @@ import LoginPage from "./Pages/Auth/Login/Login";
 import ForgotPasswordPage from "./Pages/Auth/ResetPass/ForgotPassword";
 import ResetPage from "./Pages/Auth/ResetPass/Reset";
 import DashboardPage from "./Pages/App/DashContainer";
+import RouterDash from "./Pages/Auth/RouterDash/Page";
+import MatCanBoard from "./Pages/App/MatCan/MatCanBoard";
+import MatRepBoard from "./Pages/App/MatRep/MatRepBoard";
 
 const App = () => {
   console.log("app is working");
@@ -15,6 +18,10 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/app" element={<PrivateOutlet />}>
+          <Route path="router" element={<RouterDash />}/>
+          <Route path="matCan" element={<MatCanBoard />}/>
+          <Route path="matRep" element={<MatRepBoard/>}/>
+          
         <Route exact path="dashboard" element={<DashboardPage />} />
         </Route>
 
