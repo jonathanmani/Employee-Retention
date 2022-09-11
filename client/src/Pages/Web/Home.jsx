@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Nav from "../../Layouts/Nav";
+import Nav from "../../Layouts/Navbars/Nav";
 import Page from "../../Layouts/Page";
 const Home = () => {
   let navigate = useNavigate()

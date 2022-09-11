@@ -16,7 +16,7 @@ const LoginScreen = ({ history }) => {
 
   useEffect(() => {
     if (tokenChecker()) {
-      return navigate("/app/routerDash");
+      return navigate("/app/router");
     }
     if (getError) {
       setError(getError);
@@ -36,7 +36,7 @@ const LoginScreen = ({ history }) => {
       localStorage.setItem("authToken", data.token);
       localStorage.removeItem("error-message");
 
-      return navigate("/app/dashboard");
+      return navigate("/app/router");
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {

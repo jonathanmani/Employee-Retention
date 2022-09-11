@@ -1,5 +1,5 @@
 import React from 'react'
-import AppNav from '../../Layouts/Admin/AdminNav'
+import AppNav from '../../Layouts/Navbars/AppNav'
 import { useContext } from 'react'
 import { UserContext } from '../../Contexts/User/context'
 import Page from '../../Layouts/Page'

@@ -1,4 +1,4 @@
-import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useContext } from "react";
 import jwtDecode from "jwt-decode";
 import { tokenRemover } from "../Utils/token";
@@ -45,7 +45,11 @@ function PrivateOutlet() {
   const auth = localStorage.getItem("authToken");
 
   
-  return auth ? <Outlet /> : <Navigate to="/login" />;
+  if(auth){
+    return <Outlet />
+  } else {
+    return navigate('auth/login')
+  }
 }
 
 export default PrivateOutlet;
