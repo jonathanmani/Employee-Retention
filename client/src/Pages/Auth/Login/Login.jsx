@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext} from "react";
 import axios from "axios";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./login.module.css";
@@ -6,11 +6,15 @@ import { IoIosArrowBack } from "react-icons/io";
 import { getConfig } from "../../../Utils/config";
 import { tokenChecker } from "../../../Utils/token";
 import { motion } from "framer-motion";
+import { UserContext } from "../../../Contexts/User/context";
+
 const LoginScreen = ({ history }) => {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const {idHandler} = useContext(UserContext)
+  
 
   const getError = localStorage.getItem("error-message");
 
@@ -32,7 +36,8 @@ const LoginScreen = ({ history }) => {
         { email, password },
         config
       );
-      console.log(data);
+      
+      localStorage.setItem("id",data.user.id);
       localStorage.setItem("authToken", data.token);
       localStorage.removeItem("error-message");
 

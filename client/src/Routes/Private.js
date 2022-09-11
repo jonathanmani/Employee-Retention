@@ -10,6 +10,7 @@ function PrivateOutlet() {
   const location = useLocation();
   const navigate = useNavigate();
   const { userStorageHandler } = useContext(UserContext);
+  const { idHandler } = useContext(UserContext);
 
   const config = getAuthConfig();
 
@@ -21,13 +22,17 @@ function PrivateOutlet() {
       navigate("/");
       tokenRemover();
     }
+    
     userObject();
   };
+
   const userObject = async () => {
+    const id = localStorage.getItem("id")
     try {
       await axios
-        .get("http://localhost:4000/api/user", config)
+        .get(`http://localhost:4000/api/user/${id}`, config)
         .then((response) => {
+
           const { firstName, lastName, email, candidateType} = response.data.user;
           userStorageHandler(firstName,lastName,email, candidateType);
         });
