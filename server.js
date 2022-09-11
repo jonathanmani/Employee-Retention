@@ -20,6 +20,7 @@ app.use(cors());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/user'));
 app.use('/api/job', require('./routes/job'));
+app.use('/api/hr', require('./routes/hrBroker'));
 
 //* Error Handler (Should be the last piece of middlerware)
 app.use(errorHandler);

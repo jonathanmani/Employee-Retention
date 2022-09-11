@@ -8,7 +8,8 @@ const MatCanSchema = new mongoose.Schema({
         ref: "User"
     },
     allowedJobTitles: [String],
-    
+    industries: [String],
+    yearsOfExperience: Number, 
 });
 
 const MatCan = mongoose.model('MatCan', MatCanSchema);

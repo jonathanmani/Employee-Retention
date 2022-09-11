@@ -9,3 +9,5 @@ hrBrokerRouter.route('/').post(createHrBroker);
 
 // Send job for review to HR Broker
 hrBrokerRouter.route("/review").post(reviewJob);
+
+module.exports = hrBrokerRouter;

@@ -1,19 +1,33 @@
-const Job = require("../models/Job");
-const Company = require("../models/Company");
 const HRBroker = require("../models/HRBroker");
-const User = require("../models/User");
 
-exports.createHrBroker = async (req, res) => {
+const createHrBroker = async (req, res) => {
+    try{
+        const {user} = req.body;
+        const existingBroker = HRBroker.findById(user);
+        if(!existingBroker){
+            const newBroker = await HRBroker.create({user: user, candidatesToReview: []})
+            res.json(newBroker).status(201);
+        }
+    }catch(err){
+        res.status(400);
+    }
+}
+
+
+const reviewJob = async (req, res) => {
     try{
         const {
             user,
             jobsToReview
         } = req.body;
-        const existingUser = User.findById(req.body.user);
+        const existingUser = HRBroker.findById(req.params.id);
         if(existingUser && jobsToReview){
-           User.updateOne({id: user}, {"$set": {jobsToReview}}) 
+           for(job in jobsToReview){
+            existingUser.candidatesToReview.push(job);
+           }
+           res.json(existingUser).status(201);
         }
-        if (jobsToReview) {
+        else if (jobsToReview) {
             const review = await HRBroker.create({
                 user: user,
                 jobsToReview: jobsToReview
@@ -23,4 +37,9 @@ exports.createHrBroker = async (req, res) => {
     }catch(err){
         res.status(403)
     }
+}
+
+module.exports = {
+    createHrBroker,
+    reviewJob
 }
