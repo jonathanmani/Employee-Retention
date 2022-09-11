@@ -5,3 +5,5 @@ const { createHrBroker } = require('../controllers/hrBroker');
 
 // create new HR broker
 hrBrokerRouter.route('/').post(createHrBroker);
+
+module.exports = hrBrokerRouter

@@ -1,6 +1,6 @@
 const MatCan = require('../models/MatCan');
 
-const findCandidates = (jobTitle, startDate, endDate) => {
+exports.findCandidates = (jobTitle, startDate, endDate) => {
   // check job title - any match or string comparison
   
 
@@ -8,4 +8,4 @@ const findCandidates = (jobTitle, startDate, endDate) => {
   // threshold
 };
 
-export default { findCandidates };
+
