@@ -1,23 +1,11 @@
-import React from 'react'
+import React,{useEffect,useContext} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../../../Contexts/User/context'
 
 const Page = () => {
     const navigate = useNavigate()
-    const userChecker = () => {
-
-            if(role === "matrep" ) {
-                return navigate("/app/matrep")
-            }
-            if(role === "matcan") {
-                return navigate("/app/matcan")
-            }
-            if(role === "admin") {
-                return navigate("/app/admin")
-            }
-    }
-    useEffect(() => {
-        userChecker()
-    }, [])
+    const {type} = useContext(UserContext)
+    return navigate(`/app/${type}`)
 }
 
 export default Page

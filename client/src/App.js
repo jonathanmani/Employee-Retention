@@ -8,6 +8,8 @@ import LoginPage from "./Pages/Auth/Login/Login";
 import ForgotPasswordPage from "./Pages/Auth/ResetPass/ForgotPassword";
 import ResetPage from "./Pages/Auth/ResetPass/Reset";
 import DashboardPage from "./Pages/App/DashContainer";
+import ProfilePage from "./Pages/App/Profile/Page"
+
 
 const App = () => {
   console.log("app is working");
@@ -15,12 +17,19 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/app" element={<PrivateOutlet />}>
+
+          <Route path="dash" element={<DashboardPage />}/>
+          <Route path="profile" element={<ProfilePage />}/>
+          <Route path="jobs" element={<ProfilePage />}/>
+         
+          
         <Route exact path="dashboard" element={<DashboardPage />} />
         </Route>
 
         <Route path="/auth" element={<PublicOutlet />}>
           <Route exact path="login" element={<LoginPage />} />
           <Route exact path="register" element={<RegisterPage />} />
+          <Route exact path="register/:company" element={<RegisterPage />} />
           <Route
             exact
             path="forgotpassword"
