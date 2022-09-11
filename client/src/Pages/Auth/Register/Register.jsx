@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./register.module.css";
 
 import { getConfig } from "../../../Utils/config";
@@ -9,6 +9,7 @@ import { tokenChecker } from "../../../Utils/token";
 
 import { IoIosArrowBack } from "react-icons/io";
 import { motion } from "framer-motion";
+
 
 const RegisterPage = ({ history }) => {
   let navigate = useNavigate();
@@ -19,11 +20,15 @@ const RegisterPage = ({ history }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [candidate,setCandidate] = useState("")
+  const [companyVal, setCompanyVal] = useState("")
+  let { company } = useParams();
+  
 
   useEffect(() => {
     if (tokenChecker()) {
       return navigate("/app/dashboard");
     }
+    setCompanyVal(company)
   }, [history]);
 
   const registerHandler = async (e) => {
@@ -75,7 +80,10 @@ const RegisterPage = ({ history }) => {
               </Link>
             </motion.div>
           </div>
-          <h3 className="text-center">Register</h3>
+          {company ? <span className="text-center p-3">
+          <h1><b>{company}</b></h1>
+          <h3>Maternity IO Registration</h3>
+          </span> : <h3 className="text-center p-3">Register to Help Others</h3>}
           {error && (
             <span className=" bg-danger error-message rounded p-1 text-white">
               {error}
@@ -118,10 +126,9 @@ const RegisterPage = ({ history }) => {
           </div>
           <div className="form-group d-flex flex-column py-2">
             <label htmlFor="email">Candidate Type:</label>
-            <select id="inputState" onChange={(e) => setCandidate(e.target.value)}>
-              <option>Mat Can</option>
-              <option>Mat Rep </option>
-              <option>Admin</option>
+            <select id="inputState" className="form-select" onChange={(e) => setCandidate(e.target.value)}>
+              
+              {company ? <option>Looking for Help</option> : <option value={"matRep"}>Looking to Help </option>}
             </select>
           </div>
 

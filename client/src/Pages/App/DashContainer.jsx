@@ -1,26 +1,37 @@
-import React from 'react'
-import AppNav from '../../Layouts/Navbars/AppNav'
-import { useContext } from 'react'
-import { UserContext } from '../../Contexts/User/context'
-import Page from '../../Layouts/Page'
-import { useEffect } from 'react'
+import React from "react";
+import AppNav from "../../Layouts/Navbars/AppNav";
+import { useContext } from "react";
+import { UserContext } from "../../Contexts/User/context";
+import Page from "../../Layouts/Page";
+import { useEffect } from "react";
+import TripleCardRep from "../../Components/Cards/MatCan/TripleCard";
+import TripleCardCan from "../../Components/Cards/MatRep/TripleCard";
+import TripleCardSkeleton from "../../Components/Cards/TripleCardSkeleton"
 const Dashboard = () => {
-  const {firstName, lastName, email} = useContext(UserContext)
-  console.log(firstName + "this is the first name")
+  const { type } = useContext(UserContext);
+  let component;
+  if (type === "matRep") {
+    component = <TripleCardCan />;
+  }
+  if (type === "matCan") {
+    component = <TripleCardRep />;
+  }
 
   return (
     <>
-    <AppNav>
+      <AppNav>
         <Page>
-            {firstName}
-            <br/>
-            {lastName}
-            <br/>
-            {email}
+          {component ? (
+            <>{component}</>
+          ) : (
+            <>
+              <TripleCardSkeleton />
+            </>
+          )}
         </Page>
-    </AppNav>
+      </AppNav>
     </>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
