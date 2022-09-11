@@ -8,7 +8,7 @@ const {
 } = require('../controllers/user');
 
 // Get a user for profile page
-userRouter.route("/").get(protect, getUserDetails);
+userRouter.route("/:id").get(getUserDetails);
 
 // Get Employee's type - matcan or matrep
 // Get all candidates a replacement can apply for
