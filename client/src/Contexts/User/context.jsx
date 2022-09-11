@@ -11,6 +11,11 @@ export function UserProvider({ children }) {
   const [company, setCompany] = useState("");
   const [type, setType] = useState("");
   const [onboarding, setOnboarding ] = useState("");
+  const [id, setId] = useState("")
+
+  const idHandler = (value) => {
+    setId(value)
+  }
 
   const userStorageHandler = (fName,lName,email,candidateType) => {
     
@@ -22,7 +27,7 @@ export function UserProvider({ children }) {
   }
   return (
     <UserContext.Provider
-      value={{firstName, lastName, email,type, userStorageHandler }}
+      value={{firstName, lastName, email,type, userStorageHandler,id, idHandler }}
     >
       {children}
     </UserContext.Provider>
