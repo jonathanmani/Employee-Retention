@@ -1,52 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Select = () => {
-  const submitHandler = () => {
+import Select from "react-select";
+import { getAuthConfig } from "../../Utils/config";
 
-  }
+const SelectComp = () => {
+  const [industry, setIndustry] = useState("");
+  const [title, setTitle] = useState("");
+  const [options, setOptions] = useState([]);
+
+  const pullJobTitles = async(props) => {
+    const config = getAuthConfig();
+    try {
+      await axios
+        .get("http://localhost:4000/api/job", config)
+        .then((response) => {
+          response.data.map((val, index) => {
+            console.log(val)
+            setOptions([...props, val])
+          });
+        });
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    pullJobTitles();
+  }, []);
+
+  const submitHandler = () => {};
   return (
     <div className="w-50">
       <h1>Edit Your Profile</h1>
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">
-          Areas of Expertise
+          Industries
         </label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="name@example.com"
-        />
+        <select
+          className="form-select"
+          onChange={(e) => setIndustry(e.target.value)}
+        >
+          <option value="">Marketing</option>
+          <option value="">Finance</option>
+          <option value="">Data</option>
+          <option value="">Software</option>
+          <option value="">Law</option>
+          <option value="">Sales</option>
+        </select>
       </div>
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">
-          Years of Experience
+          Job Title
         </label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="name@example.com"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">
-          Roles types your interested in
-        </label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="name@example.com"
-        />
+        <Select options={options} isMulti={true} />
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button onClick={submitHandler} class="btn btn-primary me-md-2 px-4" type="button">
-        Save
-      </button>
+        <button
+          onClick={submitHandler}
+          class="btn btn-primary me-md-2 px-4"
+          type="button"
+        >
+          Save
+        </button>
       </div>
     </div>
   );
 };
 
-export default Select;
+export default SelectComp;
