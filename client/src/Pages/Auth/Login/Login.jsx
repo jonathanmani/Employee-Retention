@@ -16,7 +16,7 @@ const LoginScreen = ({ history }) => {
 
   useEffect(() => {
     if (tokenChecker()) {
-      return navigate("/app/dashboard");
+      return navigate("/app/routerDash");
     }
     if (getError) {
       setError(getError);

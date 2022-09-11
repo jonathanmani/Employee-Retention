@@ -1,13 +1,17 @@
 import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import jwtDecode from "jwt-decode";
 import { tokenRemover } from "../Utils/token";
-import {getAuthConfig} from'../Utils/config';
+import { getAuthConfig } from "../Utils/config";
+import { UserContext } from "../Contexts/User/context";
+import axios from "axios";
 
 function PrivateOutlet() {
   const location = useLocation();
   const navigate = useNavigate();
-  const config = getAuthConfig()
+  const { userStorageHandler } = useContext(UserContext);
+
+  const config = getAuthConfig();
 
   const securityCheck = () => {
     let token = localStorage.getItem("authToken");
@@ -17,28 +21,30 @@ function PrivateOutlet() {
       navigate("/login");
       tokenRemover();
     }
-    userObject()
+    userObject();
   };
-  const userObject = async() => {
-
+  const userObject = async () => {
     try {
-      await axios.get("/api/user", config).then((response) => {
-        const {firstName,lastName, isOnboardingCompleted, email, role, company, type } = response.data
-        userStorageHandler(firstName, lastName,)
-      });
+      await axios
+        .get("http://localhost:4000/api/user", config)
+        .then((response) => {
+          const { firstName, lastName, email } = response.data.user;
+          userStorageHandler(firstName,lastName,email);
+        });
     } catch (error) {
       console.log(error);
     }
   };
-  }
 
   useEffect(() => {
-    securityCheck()
-    
+    securityCheck();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const auth = localStorage.getItem("authToken");
+
+  
   return auth ? <Outlet /> : <Navigate to="/login" />;
 }
 

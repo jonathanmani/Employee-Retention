@@ -10,18 +10,18 @@ export function UserProvider({ children }) {
   const [role, setRole] = useState("");
   const [company, setCompany] = useState("");
   const [type, setType] = useState("");
+  const [onboarding, setOnboarding ] = useState("");
 
-  const userStorageHandler = (fName,lName,email,role,company,type) => {
+  const userStorageHandler = (fName,lName,email) => {
+    
     setFirstName(fName)
     setLastName(lName)
     setEmail(email)
-    setRole(role)
-    setCompany(company)
-    setType(type)
+    console.log('set')
   }
   return (
     <UserContext.Provider
-      value={{ color, firstName, lastName, email, role, company, type, userStorageHandler }}
+      value={{firstName, lastName, email, role, company, type, userStorageHandler }}
     >
       {children}
     </UserContext.Provider>
