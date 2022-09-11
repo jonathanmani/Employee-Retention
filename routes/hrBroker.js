@@ -1,9 +1,13 @@
 const express = require('express');
 const hrBrokerRouter = express.Router();
 
-const { createHrBroker } = require('../controllers/hrBroker');
+const { createHrBroker, reviewJob } = require('../controllers/hrBroker');
 
 // create new HR broker
 hrBrokerRouter.route('/').post(createHrBroker);
 
-module.exports = hrBrokerRouter
+
+// Send job for review to HR Broker
+hrBrokerRouter.route("/review").post(reviewJob);
+
+module.exports = hrBrokerRouter;

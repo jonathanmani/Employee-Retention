@@ -8,6 +8,8 @@ const MatRepSchema = new mongoose.Schema({
         ref: "User"
     },
     allowedJobTitles: [String],
+    industries: [String],
+    yearsOfExperience: Number,
 });
 
 const MatRep = mongoose.model('MatRep', MatRepSchema);
