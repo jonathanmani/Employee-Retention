@@ -1,8 +1,17 @@
 const MatCan = require('../models/MatCan');
 
-exports.findReplacements = (jobTitle, startDate, endDate) => {
-  // check job title - any match or string comparison
-  // check for start and end dates - check if overlap
-  // threshold
+exports.findReplacements = (candidate) => {
+  const jobTitles = candidate.allowedJobTitles;
+  const reps = MatRep.find({});
+  const suitableReps = [];
+  for (let i = 0; i < reps.length; i++) {
+    for (let j = 0; j < reps.allowedJobTitles.length; j++) {
+      if (jobTitles.includes(reps[i].allowedJobTitles[j])) {
+        suitableReps.push(jobTitles)
+        continue;
+      }
+    }
+  }
+  return suitableReps;
 };
 
