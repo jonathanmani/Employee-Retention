@@ -12,16 +12,17 @@ export function UserProvider({ children }) {
   const [type, setType] = useState("");
   const [onboarding, setOnboarding ] = useState("");
 
-  const userStorageHandler = (fName,lName,email) => {
+  const userStorageHandler = (fName,lName,email,candidateType) => {
     
     setFirstName(fName)
     setLastName(lName)
     setEmail(email)
-    console.log('set')
+    setType(candidateType)
+    console.log(candidateType)
   }
   return (
     <UserContext.Provider
-      value={{firstName, lastName, email, role, company, type, userStorageHandler }}
+      value={{firstName, lastName, email,type, userStorageHandler }}
     >
       {children}
     </UserContext.Provider>

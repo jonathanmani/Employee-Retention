@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 const userRouter = express.Router();
-const {protect } = require('../middleware/auth')
+const { protect } = require("../middleware/auth");
 const {
   getUserDetails,
   getAvailableCandidates,
@@ -8,7 +8,7 @@ const {
 } = require('../controllers/user');
 
 // Get a user for profile page
-userRouter.route('/:id').get(getUserDetails);
+userRouter.route("/").get(protect, getUserDetails);
 
 // Get Employee's type - matcan or matrep
 // Get all candidates a replacement can apply for

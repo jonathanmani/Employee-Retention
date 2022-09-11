@@ -1,14 +1,16 @@
 import React from 'react'
 
+
 const Representative = ({ name, jobTitle, skills, representativeLink }) => {
   return (
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{ name }</h5>
-            <h6 class='card-subtitle'>{ jobTitle }</h6>
-            <h6 class="card-subtitle mb-2 text-muted">{ match }</h6>
-            <p class="card-text">{ skills }</p>
-            <a href={ `${representativeLink}` } class="card-link">See More</a>
+    
+    <div className="card" >
+        <div className="card-body">
+            <h5 className="card-title"></h5>
+            <h6 className='card-subtitle'></h6>
+            <h6 className="card-subtitle mb-2 text-muted"></h6>
+            <p className="card-text"></p>
+            <a  className="card-link">See More</a>
         </div>
     </div>
   )

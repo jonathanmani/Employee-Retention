@@ -13,5 +13,4 @@ export const getThisToken = () => {
   };
   export const tokenRemover = () => {
     localStorage.removeItem("authToken");
-    window.location.reload();
   };

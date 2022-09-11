@@ -1,4 +1,4 @@
-import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useContext } from "react";
 import jwtDecode from "jwt-decode";
 import { tokenRemover } from "../Utils/token";
@@ -18,7 +18,7 @@ function PrivateOutlet() {
     const { exp } = jwtDecode(token);
     const currentTime = new Date().getTime();
     if (exp * 1000 < currentTime) {
-      navigate("/login");
+      navigate("/");
       tokenRemover();
     }
     userObject();
@@ -28,8 +28,8 @@ function PrivateOutlet() {
       await axios
         .get("http://localhost:4000/api/user", config)
         .then((response) => {
-          const { firstName, lastName, email } = response.data.user;
-          userStorageHandler(firstName,lastName,email);
+          const { firstName, lastName, email, candidateType} = response.data.user;
+          userStorageHandler(firstName,lastName,email, candidateType);
         });
     } catch (error) {
       console.log(error);
@@ -45,7 +45,11 @@ function PrivateOutlet() {
   const auth = localStorage.getItem("authToken");
 
   
-  return auth ? <Outlet /> : <Navigate to="/login" />;
+  if(auth){
+    return <Outlet />
+  } else {
+    return navigate('auth/login')
+  }
 }
 
 export default PrivateOutlet;
