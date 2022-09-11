@@ -22,9 +22,9 @@ const Navbar = () => {
               </a> */}
             </li>
             <li>
-              <a href="#" class="nav-link px-2 link-dark">
-                See Jobs
-              </a>
+              {/* <a href="#" class="nav-link px-2 link-dark">
+                Job Offers
+              </a> */}
             </li>
             {/* <li>
               <a href="#" class="nav-link px-2 link-dark">
@@ -32,9 +32,9 @@ const Navbar = () => {
               </a>
             </li> */}
             <li>
-              <a href="#" class="nav-link px-2 link-dark">
-                Skills Profile
-              </a>
+              {/* <a href="#" class="nav-link px-2 link-dark">
+                Your Profile
+              </a> */}
             </li>
             {/* <li>
               <a href="#" class="nav-link px-2 link-dark">

@@ -1,12 +1,13 @@
 import React from "react";
+import TripleCard from "../../../Components/Cards/MatRep/TripleCard";
 import Jobs from "../../../Components/Jobs/MatRep/Jobs";
-import Navbar from "../../../Layouts/Navbars/MatRep/Nav";
+import Navbar from "../../../Layouts/Navbars/AppNav";
 
 const MatRepBoard = () => {
   return (
     <div>
       <Navbar>
-        <h1 className="text-center fs-2"> You are looking to cover someones job while on mat leave</h1>
+        <TripleCard />
         {/* <Jobs /> */}
       </Navbar>
     </div>
